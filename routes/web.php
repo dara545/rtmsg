@@ -14,3 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('test', function(){
+    return App\PrivateMessage::where('id',1)->first();
+});
