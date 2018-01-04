@@ -17,19 +17,19 @@ use Illuminate\Support\Facades\Schema;
 	> create model & migration
 - \database\migrations\2018_01_04_044314_create_private_messages_table.php
 ```
-        Schema::create('private_messages', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('sender_id')->unsigned();
-            $table->integer('receiver_id')->unsigned();
-            $table->string('subject');
-            $table->text('message');
-            $table->boolean('read');
-            $table->timestamps();
+	Schema::create('private_messages', function (Blueprint $table) {
+		$table->increments('id');
+		$table->integer('sender_id')->unsigned();
+		$table->integer('receiver_id')->unsigned();
+		$table->string('subject');
+		$table->text('message');
+		$table->boolean('read');
+		$table->timestamps();
 
-            $table->index('sender_id');
-            $table->index('receiver_id');
-            $table->index(['sender_id', 'read']);
-        });
+		$table->index('sender_id');
+		$table->index('receiver_id');
+		$table->index(['sender_id', 'read']);
+	});
 ```
 - \app\PrivateMessage.php
 ```
@@ -70,5 +70,5 @@ App\PrivateMessage::where('id', 1)->first();
 Route::get('test', function(){
     return App\PrivateMessage::where('id',1)->first();
 });
-``
+```
 ## Controller
