@@ -2,12 +2,18 @@
 
 namespace App;
 
+use App\User;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class PrivateMessage extends Model
 {
     protected $fillable = ['sender_id', 'receiver_id', 'subject', 'message', 'read'];
     protected $appends = ['sender', 'receiver'];
+
+    public function getCreatedAttribute($value) {
+        return Carbon::parse($value)->diffForHumans();
+    }
 
     public function getSenderAttribute(){
         return User::where('id', $this->sender_id)->first();

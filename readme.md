@@ -71,4 +71,13 @@ Route::get('test', function(){
     return App\PrivateMessage::where('id',1)->first();
 });
 ```
+- php artisan make:auth
+
 ## Controller
+- php artisan make:controller PrivateMessageController
+- \routes\web.php
+	Route::post('get-private-message-notifications', 'PrivateMessageController@getUserNotifications');
+	Route::post('get-private-messages', 'PrivateMessageController@getPrivateMessages');
+	Route::post('get-private-message', 'PrivateMessageController@getPrivateMessageById');
+	Route::post('get-private-messages-sent', 'PrivateMessageController@getPrivateMessageSent');
+	Route::post('send-private-messages', 'PrivateMessageController@sendPrivateMessage');
